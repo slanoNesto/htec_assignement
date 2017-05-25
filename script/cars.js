@@ -8,9 +8,7 @@ window.Cars = (function($, _, Render) {
         load,
         select,
         getSelectedCars,
-        getCarsByName,
-        searchCars,
-        renderCars
+        searchCars
     };
 
     function load() {

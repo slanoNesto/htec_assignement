@@ -5,7 +5,7 @@ window.Render = (function($) {
         component,
         showLoader,
         hideLoader
-    }
+    };
 
     function component(component, data) {
         let source = $('#' + component + '-template').html();
