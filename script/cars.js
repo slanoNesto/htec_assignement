@@ -6,7 +6,7 @@ window.Cars = (function($, _, Render) {
 
     return {
         load,
-        selectCar,
+        select,
         getSelectedCars,
         getCarsByName,
         searchCars,
@@ -22,9 +22,10 @@ window.Cars = (function($, _, Render) {
         });
     }
 
-    function selectCar(id, cb) {
+    function select(id, cb) {
         let car = _.find(data.cars, {id});
         car._selected = !car._selected;
+        markSelected(car);
         cb();
     }
 
@@ -45,6 +46,21 @@ window.Cars = (function($, _, Render) {
 
     function renderCars(data) {
         Render.component('cars', data);
+        markSelectedAll(data.cars);
+    }
+
+    function markSelected(car) {
+        if (car._selected) {
+            $('#card-' + car.id).addClass('selected');
+        } else {
+            $('#card-' + car.id).removeClass('selected');
+        }
+    }
+
+    function markSelectedAll(cars) {
+        for (let i = 0; i < cars.length; i++) {
+            markSelected(cars[i]);
+        }
     }
 
 })(window.jQuery, window._, window.Render);

@@ -8,7 +8,7 @@
     function carSelect() {
         resetState();
         let carId = $(this).data().carId;
-        Cars.selectCar(carId, () => {
+        Cars.select(carId, () => {
             Race.renderTrack({cars: Cars.getSelectedCars()});
         });
     }
