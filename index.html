@@ -1,0 +1,96 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cars</title>
+
+    <link rel="stylesheet" href="lib/mdl/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main">
+        <div class="form">
+            <form action="#" id="search-cars-form">
+                <div class="mdl-textfield mdl-js-textfield">
+                    <input class="mdl-textfield__input" type="text" id="search-cars-input">
+                    <label class="mdl-textfield__label" for="sample1">Search cars...</label>
+                </div>
+            </form>
+        </div>
+
+        <div class="cars-container"></div>
+
+        <div class="track-container"></div>
+
+        <div class="race-rankings">
+            <table id="rankings-table" class="rankings-table mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+                <thead>
+                    <tr>
+                        <th class=mdl-data-table__cell--non-numeric>Ranking</th>
+                        <th class=mdl-data-table__cell--non-numeric>Car</th>
+                        <th class=mdl-data-table__cell--non-numeric>Time</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+        <div class="loader-container absolute-middle">
+            <div id="main-loader" class="mdl-spinner mdl-js-spinner"></div>
+        </div>
+    </div>
+
+
+    <!-- TEMPLATES -->
+    <script id="cars-template" type="text/x-handlebars-template">
+        <ul class="cars-list">
+            {{#each cars}}
+            <li>
+                <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                    <div class="mdl-card__title mdl-card--expand" style="background-image: url({{image}})">
+                        <h2 class="mdl-card__title-text">{{name}}</h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        {{description}}
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <a data-car-id="{{id}}" class="car mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">Select Car</a>
+                        <span class="car-speed">{{speed}}km/h</span>
+                    </div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+    <script id="track-template" type="text/x-handlebars-template">
+        <div class="track-headline"></div>
+        <ul class="track">
+            {{#each cars}}
+            <li>
+                <div class="track-line">
+                    <div id="car-{{id}}" class="track-car" style="background-image: url({{image}})"></div>
+                    <div class="track-car-data absolute-middle">{{name}} ({{speed}}km/h)</div>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+        <button id="start-btn" class="start-btn mdl-button mdl-js-button mdl-button--raised mdl-button--colored">
+            Start
+        </button>
+    </script>
+
+    <script src="lib/jquery.js"></script>
+    <script src="lib/handlebars-v4.0.5.js"></script>
+    <script src="lib/mdl/material.min.js"></script>
+    <script src="lib/lodash.js"></script>
+    <script src="lib/moment.min.js"></script>
+    <script src="script/render.js"></script>
+    <script src="script/cars.js"></script>
+    <script src="script/rankings.js"></script>
+    <script src="script/race.js"></script>
+    <script src="script/index.js"></script>
+</body>
+</html>
