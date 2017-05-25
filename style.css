@@ -1,5 +1,5 @@
 * { box-sizing: border-box; }
-body { padding: 1em; }
+body { padding: 1em; overflow-y: scroll; }
 ul { margin: 0; padding: 0; }
 li { list-style-type: none }
 h3 { margin: 0; font-size: 1.3em}
@@ -92,6 +92,13 @@ h3 { margin: 0; font-size: 1.3em}
     color: #fff;
     opacity: .6;
     z-index: 0;
+}
+
+.distance {
+    height: 30px;
+    text-align: center;
+    color: #c6c6c6;
+    font-size: 1.1em;
 }
 
 

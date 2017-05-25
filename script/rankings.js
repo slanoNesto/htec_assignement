@@ -1,9 +1,8 @@
-window.Rankings = (function($, moment, Render) {
+window.Rankings = (function($, moment) {
     const rankingsElement = $('#rankings-table tbody');
 
     return {
         reset,
-        renderTrack,
         add
     };
 
@@ -13,14 +12,10 @@ window.Rankings = (function($, moment, Render) {
         rankingsElement.empty();
     }
 
-    function renderTrack(data) {
-        Render.component('track', data);
-    }
-
     function add(car) {
         $('#rankings-table').show();
-        let time = moment.utc(car._secondsToArrival * 1000).format("HH:mm:ss");
+        let time = moment.utc(car._secondsToArrival * 1000).format('HH:mm:ss');
         rankingsElement.append('<tr><td>' + car._ranking + '</td><td>' + car.name + '</td><td>' + time + '</td></tr>');
     }
 
-})(window.jQuery, window.moment, window.Render);
+})(window.jQuery, window.moment);

@@ -2,6 +2,8 @@ window.Cars = (function($, _, Render) {
     const dataUrlSmall = 'http://www.json-generator.com/api/json/get/ctPVOIKOZK?indent=4';
     const dataUrlLarge = 'http://www.json-generator.com/api/json/get/bQJcQFdAGG?indent=4';
 
+    var data;
+
     return {
         load,
         selectCar,

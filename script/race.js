@@ -1,16 +1,22 @@
 window.Race = (function($) {
-    const RACE_DISTANCE = .3; //km
+    const RACE_DISTANCE = 0.3; //km
 
     return {
         start,
-        animateCars,
+        stop,
+        renderTrack
     };
+
+    function renderTrack(data) {
+        Render.component('track', data);
+    }
 
     function start(cars, cb) {
         for (let i = 0; i < cars.length; i++) {
             let car = cars[i];
             car._secondsToArrival = RACE_DISTANCE / car.speed * 60 * 60;
         }
+        showDistance();
         animateCars(cars, cb);
     }
 
@@ -24,6 +30,14 @@ window.Race = (function($) {
                 cb(car);
             });
         }
+    }
+
+    function stop() {
+        $('.track-car').stop();
+    }
+
+    function showDistance() {
+        $('#distance').html(RACE_DISTANCE + 'km');
     }
 
 })(window.jQuery);

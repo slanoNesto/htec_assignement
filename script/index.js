@@ -6,9 +6,10 @@
     }
 
     function carSelect() {
+        resetState();
         let carId = $(this).data().carId;
         Cars.selectCar(carId, () => {
-            Rankings.renderTrack({cars: Cars.getSelectedCars()});
+            Race.renderTrack({cars: Cars.getSelectedCars()});
         });
     }
 
@@ -21,6 +22,11 @@
     function searchCars() {
         let term = $('#search-cars-input').val();
         Cars.searchCars(term);
+    }
+
+    function resetState() {
+        Race.stop();
+        Rankings.reset();
     }
 
     //BIND EVENTS
